@@ -1,0 +1,31 @@
+{
+    "apps" : [{
+        "name": "Koa2_Dev",
+        "script": "./app.js",
+        "instances": "1",
+        "watch": [
+            "config.js",
+            "app.js",
+            "controller",
+            "model",
+            "utils"
+        ],
+        "exec_mode": "cluster",
+        "env": {
+            "NODE_ENV": "development",
+            "PATH_STATIC": "/src/static",
+            "PATH_VIEWS": "/src/view",
+            "PATH_UPLOAD_BASE": "/uploadFiles",
+            "PATH_UPLOAD_URL": "/temp_images",
+            "STATIC_CACHE": 0,
+            "PORT": "3366",
+            "REMOTE_ADDR": "https://api.douban.com",
+            "EUREKA_FILE": "",
+            "EUREKA_NAME": ""
+        },
+        "log_date_format": "",
+        "pid_file": "./logs/pid/app-id.pid",
+        "out_file": "./logs/out/out.log",
+        "error_file": "./logs/err/err.log"
+    }]
+}

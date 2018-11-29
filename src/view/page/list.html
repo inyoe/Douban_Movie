@@ -1,0 +1,37 @@
+{% set static = {
+    css: ['list.css']
+} %}
+
+{% include global.PATH_VIEWS + "/public/header.html" %}
+
+    <h1>{{res.title}}</h1>
+
+    {% if res.subjects.length %}
+    <ul>
+        {% for item in res.subjects %}
+        <li><a href="{{
+            $Route('movieDetail', {
+                params: {
+                    id: item.id
+                }
+            })
+        }}" target="_blank">
+            <div class="photo" style="background-image:url({{item.images.medium}})">
+                <span>{{item.rating.average}}分</span>
+            </div>
+            <h2>{{item.title}}</h2>
+            <p>{{item.original_title}}</p>
+            <div class="genres">
+                {% for genres in item.genres %}
+                    <span>{{genres}}</span>
+                {% endfor %}
+            </div>
+            <p>上映时间：{{item.mainland_pubdate}}</p>
+        </a></li>
+        {% endfor %}
+    </ul>
+
+    {% endif %}
+
+
+{% include global.PATH_VIEWS + "/public/footer.html" %}

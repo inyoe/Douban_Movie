@@ -1,0 +1,70 @@
+{% set static = {
+    css: ['index.css'],
+    js: 'index.js'
+} %}
+
+{% include global.PATH_VIEWS + "/public/header.html" %}
+
+
+    <h1>Nodejs Server Side Render</h1>
+    
+    <dl>
+        <dt>Nodejs</dt>
+        <dd>Koa2</dd>
+        <dd>koa-views(nunjucks)</dd>
+        <dd>koa-static</dd>
+        <dd>koa-compress</dd>
+        <dd>koa-body</dd>
+        <dd>koa-helmet</dd>
+    </dl>
+
+    <dl>
+        <dt>Frontend</dt>
+        <dd>Gulp</dd>
+        <dd>nunjucks</dd>
+        <dd>scss</dd>
+    </dl>
+
+    <a href="{{$Route('movieList')}}">上映电影列表页</a>
+
+    <a href="{{
+        $Route('movieDetail', {
+            params: {
+                id: 27110363
+            }
+        })
+    }}" target="_blank">电影详情页</a>
+    
+    <a href="{{
+        $Route('movieDetail', {
+            params: {
+                id: 27110363
+            },
+            query: {
+                page: 2,
+                size: 10
+            },
+            hash: 'Mooncake'
+        })
+    }}" target="_blank">电影详情页 (query & hash)</a>
+
+    <a href="{{
+        $Route('apiReviews', {
+            query: {
+                id: 27110363,
+                start: 1,
+                count: 2
+            }
+        })
+    }}" target="_blank">电影评论 (JSON)</a>
+    
+    <div class="upload">
+        <div class="upload-preview" id="uploadPreview"></div>
+        <a href="javascript:;">
+            <input name="myyyFiles" type="file" id="btnUpload" multiple>
+            <span>上传图片</span>
+        </a>
+    </div>
+
+
+{% include global.PATH_VIEWS + "/public/footer.html" %}

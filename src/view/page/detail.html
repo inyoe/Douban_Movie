@@ -1,0 +1,56 @@
+{% set static = {
+    css: ['detail.css'],
+    js: 'detail.js'
+} %}
+
+{% include global.PATH_VIEWS + "/public/header.html" %}
+
+    <div class="detail">
+        <img src="{{res.images.medium}}">
+        <h1>{{res.title}}({{res.original_title}})</h1>
+
+        <div class="items rating">
+            <label>评分：</label>
+            <p>{{res.rating.average}}/{{res.rating.max}} <span>({{res.ratings_count}})</span></p>
+        </div>
+
+        <div class="items reviews">
+            <label>评论数：</label>
+            <p>{{res.reviews_count}}</p>
+        </div>
+
+        <div class="items summary">
+            <label>简介：</label>
+            <p>{{res.summary}}</p>
+        </div>
+        
+        {% if res.genres.length %}
+        <div class="items genres">
+            <label>类型：</label>
+            <ul class="genres-list">
+                {% for item in res.genres %}
+                <span>{{item}}</span>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        {% if res.casts.length %}
+        <div class="items casts">
+            <label>主演：</label>
+            <ul class="casts-list">
+                {% for item in res.casts %}
+                <li>{{item.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if res.reviews_count > 0 %}
+        <span class="reviews-btn" id="loadReviews" data-id="{{res.id}}">加载评论</span>
+        <ul class="reviews-list" id="reviewsContainer"></ul>
+        {% endif %}
+    </div>
+
+
+{% include global.PATH_VIEWS + "/public/footer.html" %}

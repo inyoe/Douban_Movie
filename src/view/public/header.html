@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="webkit" name="renderer">
+    <meta content="max-age=7200" http-equiv="cache-control">
+    <meta content="{{global.seoKeywords}}" name="keywords">
+    <meta content="{{global.seoDescription}}" name="description">
+    <title>{{global.seoTitle}}</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    {% if static.cssInline %}
+        <style type="text/css">
+        {% include global.pathStatic + "/assets/css/reset.css" %}
+        {% for item in static.css%}
+        {% include global.pathStatic + "/assets/css/" + item %}
+        {% endfor %}
+        </style>
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+        {% for item in static.css%}
+            <link rel="stylesheet" type="text/css" href="/assets/css/{{item}}">
+        {% endfor %}
+    {% endif %}
+    <!--[if lt IE 9]> <script type="text/javascript">;(function(){var a=["address","article","aside","audio","video","canvas","details","figcaption","figure","header","footer","menu","nav","section","summary","picture"],b=0;for(b in a)document.createElement(a[b])}())</script><![endif]-->
+</head>
+<body>

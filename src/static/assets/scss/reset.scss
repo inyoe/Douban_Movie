@@ -1,0 +1,23 @@
+html, body, h1, h2, h3, h4, h5, h6, div, dl, dt, dd, ul, ol, li, p, blockquote, pre, hr, figure, table, caption, th, td, form, fieldset, legend, input, button, textarea, menu { margin: 0; padding: 0; }
+header, footer, section, article, aside, nav, hgroup, address, figure, figcaption, menu, details, summary, picture, iframe { display: block; }
+table { border-collapse: collapse; border-spacing: 0; }
+caption, th { text-align: left; font-weight: normal; }
+html, body, img, iframe, abbr { border: 0; }
+address, i, em, b { font-style: normal; }
+[hidefocus], summary, button:focus, a, a:focus { outline: 0; }
+li { list-style: none; }
+sup, sub { font-size: 12px; }
+textarea { padding: 8px; overflow: auto; resize: none; }
+label { cursor: default; }
+a, button, input[type="submit"] { cursor: pointer; }
+h1, h2, h3, h4, h5, h6, b { font-weight: normal; display: block; }
+a { color: inherit; *color: #666; -webkit-transition: .3s; -moz-transition: .3s; transition: .3s; }
+a, a:hover { text-decoration: none; }
+body, textarea, input, button, select, keygen, legend { font: 14px/1.6 'Microsoft Yahei','\5FAE\8F6F\96C5\9ED1',Arial,'Hiragino Sans GB','\5B8B\4F53'; color: #454545; outline: 0; -webkit-font-smoothing: antialiased; }
+body { min-width:1000px; background: #f8f8f8; -webkit-transition: none !important; -moz-transition: none !important; -ms-transition: none !important; -o-transition: none !important; }
+
+.fl { float: left; }
+.fr { float: right; }
+.clear { zoom: 1; }
+.clear:after { content: ''; width: 0; height: 0; display: block; clear: both; }
+.dib { display: inline-block; *display: inline; *zoom: 1; }
