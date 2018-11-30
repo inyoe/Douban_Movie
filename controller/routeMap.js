@@ -28,5 +28,11 @@ module.exports = [
         url: '/_api/upload/',
         method: 'post',
         handler: 'apiImageUpload'
+    },
+    {
+        name: 'apiImageDown',
+        url: '/_api/down/:name',
+        method: 'get',
+        handler: 'apiImageDown'
     }
 ]

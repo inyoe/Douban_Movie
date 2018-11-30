@@ -1,5 +1,3 @@
-const mapSection = require(process.cwd() + '/utils/mapSection');
-
 const common = async (ctx, next) => {    
     const userAgent = ctx.request.header['user-agent'].toLowerCase();
 

@@ -12,7 +12,7 @@ define(['jquery'], function($) {
             var str = '';
 
             for (var i in data) {
-                str += '<img src="' + data[i] + '">'
+                str += '<img src="' + data[i].url + '" data-name="' + data[i].fileName + '" title="Click to download">'
             }
 
             return str;
@@ -57,7 +57,12 @@ define(['jquery'], function($) {
             });
 
             this.$container.on('click', 'img', function() {
-                window.open($(this).attr('src'));
+                var $tempIframe = $('<iframe style="display:none;" src="/_api/down/' +  $(this).attr('data-name') + '"></iframe>');
+                $('body').append($tempIframe);
+
+                setTimeout(function() {
+                    $tempIframe.remove();
+                }, 100)
             })
         }
     }

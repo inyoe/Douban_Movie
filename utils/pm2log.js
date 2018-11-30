@@ -19,9 +19,8 @@ class pm2log {
         if (type === undefined || content === undefined) return;
     
         /**
-        * 日志采集要求格式：
+        * 格式：
         * 日期 日志级别 [项目名称,..其他三个参数(留空)] 进程ID --- 进程名称       : 主内容
-        * 2018-07-04 12:01:02.456 INFO [sccf-pc-node,,,] 1234 --- node       : Start Service
         */
 
         const now = new Date();

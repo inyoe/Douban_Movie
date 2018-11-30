@@ -1,3 +1,7 @@
+const fs = require("fs");  
+const send = require('koa-send');
+const { PATH_UPLOAD_BASE, PATH_UPLOAD_URL } = process.env;
+
 const apiReviews = async (ctx, next) => {
     const { id, start = 1, count = 10 } = ctx.query;
     let result;
@@ -29,7 +33,11 @@ const apiImageUpload = async (ctx, next) => {
         const reqFilesKeys = Object.getOwnPropertyNames(reqFiles);
         const list = [];
         for (let key of reqFilesKeys) {
-            list.push(reqFiles[key].path.replace(/.*uploadFiles(.*)/, '$1'));
+            const fileName = reqFiles[key].path.replace(/.*(\/|\\)(.*\..*)/, '$2');
+            list.push({
+                url: `${PATH_UPLOAD_URL}/${fileName}`,
+                fileName
+            });
         }
         result.code = 0;
         result._files = list;
@@ -42,7 +50,26 @@ const apiImageUpload = async (ctx, next) => {
 
 }
 
+
+const apiImageDown = async (ctx, next) => {
+    const fileName = ctx.params.name;
+    const path = `${PATH_UPLOAD_BASE + PATH_UPLOAD_URL}/${fileName}`;
+    const hasFile = fs.existsSync(process.cwd() + path);
+
+    if (hasFile) {
+        ctx.attachment(path);
+        await send(ctx, path);
+    } else {
+        ctx.type = 'json';
+        ctx.body = {
+            code: -1,
+            msg: 'No such file or directory'
+        }
+    }
+}
+
 module.exports = {
     apiReviews,
-    apiImageUpload
+    apiImageUpload,
+    apiImageDown
 }
