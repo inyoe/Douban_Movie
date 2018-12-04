@@ -103,12 +103,11 @@ const fnScss = (file) => {
         return setTimeout(() => {
             return gulp.src(target, { base: SOURCE_SCSS })
                     .pipe(sourcemaps.init())
-                    .pipe(sass())
-                    .pipe(autoprefixer('last 2 version'))
-                    .on('error', (e) => {
-                        console.log('error')
+                    .pipe(sass().on('error', (e) => {
+                        console.log('====Sass Error====');
                         return reject(e) && this.end();
-                    })
+                    }))
+                    .pipe(autoprefixer('last 2 version'))
                     .pipe(sourcemaps.write())
                     .pipe(gulp.dest(SOURCE_CSS))
                     .on('end', resolve)
